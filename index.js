@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-const port = 3010;
+const port = process.env.PORT || 3010;
 
 app.use(express.static('static'));
 
