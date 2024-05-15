@@ -1,0 +1,18 @@
+meta {
+  name: Add Task
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3010/tasks/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "A Test Task",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quasi neque, iste laborum alias illo repellat temporibus excepturi et quidem."
+  }
+}
