@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import TaskData from "./data/TodoData";
 import { Task } from "./types/Todo";
 import { randomUUID } from "crypto";
+import { ErrorType } from "./types/Errors";
 
 dotenv.config();
 
@@ -33,7 +34,7 @@ app.post('/tasks', (req, res) => {
     id
   }: Partial<Task> = req.body;
   if(!title || title.length === 0) {
-    throw("Title is required to create a task");
+    throw(ErrorType.TITLE_REQUIRED);
   }
   
   const newTask: Task = {
@@ -61,6 +62,14 @@ app.get('/tasks/:id', (req: Request, res: Response) => {
     res.status(404).send("Task Not Found");
   }
 });
+
+app.patch('/tasks/:id', (req: Request, res: Response) => {
+  const updateId = req.params.id;
+  const updatedTaskData: Partial<Task> = req.body;
+  const updatedTask = todoData.updateTask(updateId, updatedTaskData);
+
+  return res.status(200).json(updatedTask);
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

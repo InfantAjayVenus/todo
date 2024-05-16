@@ -42,4 +42,13 @@ export default class TaskData {
 
         return this._taskData.length;
     }
+
+    updateTask(updateId: string, updatedTaskData: Partial<Task>) {
+        const updateIndex = this._taskData.findIndex(({id}) => id === updateId);
+        if(updateIndex < 0) throw(ErrorType.NOT_FOUND);
+
+        this._taskData[updateIndex] = {...this._taskData[updateIndex], ...updatedTaskData};
+
+        return this._taskData[updateIndex];
+    }
 }

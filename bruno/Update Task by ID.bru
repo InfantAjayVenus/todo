@@ -1,0 +1,18 @@
+meta {
+  name: Update Task by ID
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://localhost:3010/tasks/alksdnak/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "description": "This is updated description",
+    "isComplete": false
+  }
+}
