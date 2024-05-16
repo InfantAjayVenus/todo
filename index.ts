@@ -33,10 +33,10 @@ app.post('/tasks', (req, res) => {
     isFavourite,
     id
   }: Partial<Task> = req.body;
-  if(!title || title.length === 0) {
-    throw(ErrorType.TITLE_REQUIRED);
+  if (!title || title.length === 0) {
+    return res.status(400).send(ErrorType.TITLE_REQUIRED)
   }
-  
+
   const newTask: Task = {
     title,
     description: description || '',
@@ -49,7 +49,7 @@ app.post('/tasks', (req, res) => {
 
   todoData.addTask(newTask)
 
-  res.status(200).json(newTask);
+  res.status(201).json(newTask);
 })
 
 app.get('/tasks/:id', (req: Request, res: Response) => {
@@ -69,6 +69,13 @@ app.patch('/tasks/:id', (req: Request, res: Response) => {
   const updatedTask = todoData.updateTask(updateId, updatedTaskData);
 
   return res.status(200).json(updatedTask);
+})
+
+app.delete('/tasks/:id', (req: Request, res: Response) => {
+  const deleteId = req.params.id;
+  todoData.removeTask(deleteId);
+
+  res.status(204).send("OK");
 })
 
 app.listen(port, () => {

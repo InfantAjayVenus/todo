@@ -51,4 +51,8 @@ export default class TaskData {
 
         return this._taskData[updateIndex];
     }
+
+    removeTask(deleteId: string) {
+        this._taskData = this._taskData.filter(({id}) => id !== deleteId)
+    }
 }
