@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express, { ErrorRequestHandler, Request, Response } from "express";
 import { resolve } from 'path';
-import { tasksRouter } from './routes/tasks';
+import { tasksRouter } from './routes/tasksRoutes';
 
 dotenv.config();
 
