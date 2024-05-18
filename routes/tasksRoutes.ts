@@ -1,13 +1,13 @@
 import express from 'express';
-import { addTask, deleteTask, getTaskById, getTasks, updateTask } from '../controllers/tasksControllers';
+import { createTask, deleteTask, getTaskById, getAllTasks, updateTask } from '../controllers/tasksControllers';
 
 export const tasksRouter = express.Router();
 tasksRouter.use(express.json());
 
 
-tasksRouter.get('/', getTasks);
+tasksRouter.get('/', getAllTasks);
 
-tasksRouter.post('/', addTask)
+tasksRouter.post('/', createTask)
 
 tasksRouter.get('/:id', getTaskById);
 

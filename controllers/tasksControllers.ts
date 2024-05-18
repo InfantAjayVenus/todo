@@ -1,16 +1,15 @@
-import { Request, Response } from "express";
-import TaskData from "../data/TodoData";
-import { Task } from "../types/Todo";
-import { ErrorType } from "../types/Errors";
 import { randomUUID } from "crypto";
+import { Request, Response } from "express";
+import todoDb from '../models/TasksModel';
+import { ErrorType } from "../types/Errors";
+import { Task } from "../types/Todo";
 
-const todoData = new TaskData();
 
-export function getTasks(req: Request, res: Response) {
-    res.json(todoData.tasks);
+export function getAllTasks(req: Request, res: Response) {
+    res.json(todoDb.tasks);
 }
 
-export function addTask(req: Request, res: Response) {
+export function createTask(req: Request, res: Response) {
     const {
         title,
         description,
@@ -33,7 +32,7 @@ export function addTask(req: Request, res: Response) {
 
     }
 
-    todoData.addTask(newTask)
+    todoDb.addTask(newTask)
 
     res.status(201).json(newTask);
 }
@@ -41,7 +40,7 @@ export function addTask(req: Request, res: Response) {
 export function getTaskById(req: Request, res: Response) {
     const taskId = req.params.id;
     try {
-        const taskData = todoData.getTask(taskId);
+        const taskData = todoDb.getTask(taskId);
         res.json(taskData);
     } catch (error) {
         console.error(error);
@@ -52,14 +51,14 @@ export function getTaskById(req: Request, res: Response) {
 export function updateTask(req: Request, res: Response) {
     const updateId = req.params.id;
     const updatedTaskData: Partial<Task> = req.body;
-    const updatedTask = todoData.updateTask(updateId, updatedTaskData);
+    const updatedTask = todoDb.updateTask(updateId, updatedTaskData);
 
     return res.status(200).json(updatedTask);
 }
 
 export function deleteTask(req: Request, res: Response) {
     const deleteId = req.params.id;
-    todoData.removeTask(deleteId);
+    todoDb.removeTask(deleteId);
 
     res.status(204).send("OK");
 }
