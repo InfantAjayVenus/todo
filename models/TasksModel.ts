@@ -54,7 +54,7 @@ class TaskModel {
 
     updateTask(updateId: string, updatedTaskData: Partial<Task>) {
         const updateIndex = this._taskData.findIndex(({ id }) => id === updateId);
-        if (updateIndex < 0) throw (ErrorType.NOT_FOUND);
+        if (updateIndex < 0) throw (new Error(ErrorType.NOT_FOUND));
 
         this._taskData[updateIndex] = { ...this._taskData[updateIndex], ...updatedTaskData };
 

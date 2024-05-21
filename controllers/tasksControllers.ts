@@ -19,7 +19,8 @@ export function createTask(req: Request, res: Response) {
         id
     }: Partial<Task> = req.body;
     if (!title || title.length === 0) {
-        return res.status(400).send(ErrorType.TITLE_REQUIRED)
+        res.status(401);
+        throw (new Error(ErrorType.TITLE_REQUIRED));
     }
 
     const newTask: Task = {
@@ -43,17 +44,25 @@ export function getTaskById(req: Request, res: Response) {
         const taskData = todoDb.getTask(taskId);
         res.json(taskData);
     } catch (error) {
-        console.error(error);
-        res.status(404).send("Task Not Found");
+        res.status(404);
+        throw (new Error(ErrorType.NOT_FOUND))
     }
 }
 
 export function updateTask(req: Request, res: Response) {
     const updateId = req.params.id;
     const updatedTaskData: Partial<Task> = req.body;
-    const updatedTask = todoDb.updateTask(updateId, updatedTaskData);
+    try {
+        const updatedTask = todoDb.updateTask(updateId, updatedTaskData);
+        return res.status(200).json(updatedTask);
 
-    return res.status(200).json(updatedTask);
+    } catch (error: any) {
+        if(error.message === ErrorType.NOT_FOUND) {
+            res.status(404);
+            throw(error);
+        }
+
+    }
 }
 
 export function deleteTask(req: Request, res: Response) {
