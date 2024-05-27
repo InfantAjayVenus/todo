@@ -1,5 +1,6 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
+import { DEFAULT_PROJECT_ID } from "../contants/projectConstants";
 import todoDb from '../models/TasksModel';
 import { ErrorType } from "../types/Errors";
 import { Task } from "../types/Todo";
@@ -16,7 +17,8 @@ export function createTask(req: Request, res: Response) {
         dueDate,
         isComplete,
         isFavourite,
-        id
+        id,
+        projectId=DEFAULT_PROJECT_ID,
     }: Partial<Task> = req.body;
     if (!title || title.length === 0) {
         res.status(401);
@@ -30,7 +32,7 @@ export function createTask(req: Request, res: Response) {
         isFavourite: isFavourite || false,
         id: id || randomUUID(),
         dueDate,
-
+        projectId,
     }
 
     todoDb.addTask(newTask)

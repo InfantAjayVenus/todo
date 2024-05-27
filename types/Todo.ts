@@ -5,4 +5,5 @@ export type Task = {
     isComplete: boolean,
     isFavourite: boolean,
     dueDate?: Date,
+    projectId: string,
 }

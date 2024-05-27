@@ -10,6 +10,7 @@ class TaskModel {
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quasi neque, iste laborum alias illo repellat temporibus excepturi et quidem.",
             isComplete: false,
             isFavourite: false,
+            projectId: "DEFAULT_PROJECT",
         },
         {
             id: "neqweuy",
@@ -17,6 +18,7 @@ class TaskModel {
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quasi neque, iste laborum alias illo repellat temporibus excepturi et quidem.",
             isComplete: false,
             isFavourite: true,
+            projectId: "DEFAULT_PROJECT",
         },
         {
             id: "acjnfoaya",
@@ -24,6 +26,7 @@ class TaskModel {
             isComplete: false,
             isFavourite: false,
             dueDate: new Date(),
+            projectId: "DEFAULT_PROJECT",
         }
     ];
 
