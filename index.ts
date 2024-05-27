@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import express, { ErrorRequestHandler, Request, Response } from "express";
+import cors from 'cors';
 import { resolve } from 'path';
 import { errorHandler } from './middlewares/errorHandler';
 import { logger } from './middlewares/logger';
@@ -11,6 +12,7 @@ const app = express();
 
 const port = process.env.PORT || 3010;
 
+app.use(cors());
 app.use(express.static('static'));
 app.use(logger);
 app.use('/tasks', tasksRouter);
