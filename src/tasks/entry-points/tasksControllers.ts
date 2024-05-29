@@ -58,6 +58,7 @@ export function updateTask(req: Request, res: Response) {
         const updatedTask = todoDb.updateTask(updateId, updatedTaskData);
         return res.status(200).json(updatedTask);
 
+        /* eslint-disable  @typescript-eslint/no-explicit-any */
     } catch (error: any) {
         if(error.message === ErrorType.NOT_FOUND) {
             res.status(404);

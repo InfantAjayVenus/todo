@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import express, { ErrorRequestHandler, Request, Response } from "express";
 import cors from 'cors';
-import { resolve } from 'path';
 import { errorHandler } from './src/lib/middlewares/errorHandler';
 import { logger } from './src/lib/middlewares/logger';
 import { tasksRouter } from './src/tasks/entry-points/tasksRoutes';

@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
+import { RequestHandler } from "express";
 
-export function logger(req: Request, res: Response, next: Function) {
+export const logger: RequestHandler = (req, _, next) => {
     console.log(`------------------------------------------------------------`);
     
     console.log("TIME:", new Date().toString());
