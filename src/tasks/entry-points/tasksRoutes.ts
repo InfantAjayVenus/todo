@@ -7,10 +7,10 @@ tasksRouter.use(express.json());
 
 tasksRouter.get('/', getAllTasks);
 
-tasksRouter.post('/', createTask)
+tasksRouter.post('/', createTask);
 
 tasksRouter.get('/:id', getTaskById);
 
-tasksRouter.patch('/:id', updateTask)
+tasksRouter.patch('/:id', updateTask);
 
 tasksRouter.delete('/:id', deleteTask);
