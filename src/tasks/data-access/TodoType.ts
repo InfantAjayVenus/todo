@@ -6,5 +6,6 @@ export type Task = {
     isFavourite: boolean,
     dueDate?: Date,
     projectId: string,
-    subTasks?: Task[]
+    subTasks?: Task[],
+    parentTask?: Task,
 }
