@@ -2,9 +2,9 @@ import dotenv from 'dotenv';
 import express, { ErrorRequestHandler, Request, Response } from "express";
 import cors from 'cors';
 import { resolve } from 'path';
-import { errorHandler } from './middlewares/errorHandler';
-import { logger } from './middlewares/logger';
-import { tasksRouter } from './routes/tasksRoutes';
+import { errorHandler } from './src/lib/middlewares/errorHandler';
+import { logger } from './src/lib/middlewares/logger';
+import { tasksRouter } from './src/tasks/entry-points/tasksRoutes';
 
 dotenv.config();
 
@@ -13,12 +13,11 @@ const app = express();
 const port = process.env.PORT || 3010;
 
 app.use(cors());
-app.use(express.static('static'));
 app.use(logger);
 app.use('/tasks', tasksRouter);
 
 app.get('/', (req: Request, res: Response) => {
-  res.sendFile(resolve(__dirname, 'pages/index.html'));
+  res.status(200).send('OK');
 });
 
 app.use(errorHandler);

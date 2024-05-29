@@ -1,9 +1,9 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
-import { DEFAULT_PROJECT_ID } from "../contants/projectConstants";
-import todoDb from '../models/TasksModel';
-import { ErrorType } from "../types/Errors";
-import { Task } from "../types/Todo";
+import { DEFAULT_PROJECT_ID } from "../../../contants/projectConstants";
+import todoDb from '../data-access/TasksModel';
+import { ErrorType } from "../../lib/types/Errors";
+import { Task } from "../data-access/TodoType";
 
 
 export function getAllTasks(req: Request, res: Response) {
