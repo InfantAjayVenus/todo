@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import { ErrorType } from "../../lib/types/Errors";
-import { Task } from "./TodoType";
+import { Task } from "./TaskType";
 
 class TaskModel {
     private _taskData: Task[] = [

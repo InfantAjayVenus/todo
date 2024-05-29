@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { DEFAULT_PROJECT_ID } from "../../../contants/projectConstants";
 import todoDb from '../data-access/TasksModel';
 import { ErrorType } from "../../lib/types/Errors";
-import { Task } from "../data-access/TodoType";
+import { Task } from "../data-access/TaskType";
 
 
 export function getAllTasks(req: Request, res: Response) {
