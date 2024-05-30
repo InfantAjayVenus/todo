@@ -1,9 +1,8 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
-import { DEFAULT_PROJECT_ID } from "../../../contants/projectConstants";
-import todoDb from '../data-access/TasksModel';
 import { ErrorType } from "../../lib/types/Errors";
 import { Task } from "../data-access/TaskType";
+import todoDb from '../data-access/TasksModel';
 
 
 export function getAllTasks(req: Request, res: Response) {
@@ -18,11 +17,16 @@ export function createTask(req: Request, res: Response) {
         isComplete,
         isFavourite,
         id,
-        projectId=DEFAULT_PROJECT_ID,
+        projectId,
     }: Partial<Task> = req.body;
     if (!title || title.length === 0) {
         res.status(401);
         throw (new Error(ErrorType.TITLE_REQUIRED));
+    }
+
+    if (!projectId || projectId.length === 0) {
+        res.status(401);
+        throw (new Error(ErrorType.PROJECT_REQUIRED));
     }
 
     const newTask: Task = {
