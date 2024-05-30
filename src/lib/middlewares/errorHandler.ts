@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
+import { handleError } from "../ErrorHandling/primaryErrorHandler";
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.error("ERROR:", err.message);
     console.error("REQUEST_INFO:", {
         URL: req.url,
         METHOD: req.method,
@@ -9,8 +9,6 @@ export const errorHandler = (err: Error, req: Request, res: Response, next: Next
         PARAMETERS: req.params,
         BODY: req.body,
     });
-    res.status(res.statusCode || 500).json({
-        error: err.message || "Internal Server Error",
-    })
+    handleError(err, res);
     next(err);
 }

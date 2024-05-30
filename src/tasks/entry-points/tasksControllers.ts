@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { DefinedErrors } from "../../lib/constants/Errors";
 import { Task } from "../data-access/TaskType";
 import todoDb from '../data-access/TasksModel';
+import { AppError } from "../../lib/ErrorHandling/AppError";
 
 
 export function getAllTasks(req: Request, res: Response) {
@@ -20,13 +21,11 @@ export function createTask(req: Request, res: Response) {
         projectId,
     }: Partial<Task> = req.body;
     if (!title || title.length === 0) {
-        res.status(400);
-        throw (new Error(DefinedErrors.TITLE_REQUIRED));
+        throw (new AppError(DefinedErrors.TITLE_REQUIRED, 400));
     }
 
     if (!projectId || projectId.length === 0) {
-        res.status(400);
-        throw (new Error(DefinedErrors.PROJECT_REQUIRED));
+        throw (new AppError(DefinedErrors.PROJECT_REQUIRED, 400));
     }
 
     const newTask: Task = {
@@ -46,30 +45,15 @@ export function createTask(req: Request, res: Response) {
 
 export function getTaskById(req: Request, res: Response) {
     const taskId = req.params.id;
-    try {
-        const taskData = todoDb.getTask(taskId);
-        res.json(taskData);
-    } catch (error) {
-        res.status(404);
-        throw (new Error(DefinedErrors.NOT_FOUND))
-    }
+    const taskData = todoDb.getTask(taskId);
+    res.json(taskData);
 }
 
 export function updateTask(req: Request, res: Response) {
     const updateId = req.params.id;
     const updatedTaskData: Partial<Task> = req.body;
-    try {
-        const updatedTask = todoDb.updateTask(updateId, updatedTaskData);
-        return res.status(200).json(updatedTask);
-
-        /* eslint-disable  @typescript-eslint/no-explicit-any */
-    } catch (error: any) {
-        if(error.message === DefinedErrors.NOT_FOUND) {
-            res.status(404);
-            throw(error);
-        }
-
-    }
+    const updatedTask = todoDb.updateTask(updateId, updatedTaskData);
+    return res.status(200).json(updatedTask);
 }
 
 export function deleteTask(req: Request, res: Response) {

@@ -21,7 +21,7 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use(errorHandler);
 
-app.listen(port, () => {
+export const server = app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 }).on("error", (error: ErrorRequestHandler) => {
   console.error(error);

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { DefinedErrors } from "../../lib/constants/Errors";
 import { Task } from "./TaskType";
+import { AppError } from "../../lib/ErrorHandling/AppError";
 
 class TaskModel {
     private _taskData: Task[] = [
@@ -44,7 +45,7 @@ class TaskModel {
 
     getTask(taskId: string) {
         const task = this._taskData.find(({ id }) => id === taskId);
-        if (!task) throw (DefinedErrors.NOT_FOUND);
+        if (!task) throw (new AppError(DefinedErrors.NOT_FOUND, 404));
 
         return task;
     }
@@ -57,7 +58,7 @@ class TaskModel {
 
     updateTask(updateId: string, updatedTaskData: Partial<Task>) {
         const updateIndex = this._taskData.findIndex(({ id }) => id === updateId);
-        if (updateIndex < 0) throw (new Error(DefinedErrors.NOT_FOUND));
+        if (updateIndex < 0) throw (new AppError(DefinedErrors.NOT_FOUND, 404));
 
         this._taskData[updateIndex] = { ...this._taskData[updateIndex], ...updatedTaskData };
 
