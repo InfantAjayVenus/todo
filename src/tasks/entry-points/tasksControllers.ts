@@ -20,12 +20,12 @@ export function createTask(req: Request, res: Response) {
         projectId,
     }: Partial<Task> = req.body;
     if (!title || title.length === 0) {
-        res.status(401);
+        res.status(400);
         throw (new Error(ErrorType.TITLE_REQUIRED));
     }
 
     if (!projectId || projectId.length === 0) {
-        res.status(401);
+        res.status(400);
         throw (new Error(ErrorType.PROJECT_REQUIRED));
     }
 
