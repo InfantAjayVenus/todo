@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { Request, Response } from "express";
-import { ErrorType } from "../../lib/types/Errors";
+import { DefinedErrors } from "../../lib/constants/Errors";
 import { Task } from "../data-access/TaskType";
 import todoDb from '../data-access/TasksModel';
 
@@ -21,12 +21,12 @@ export function createTask(req: Request, res: Response) {
     }: Partial<Task> = req.body;
     if (!title || title.length === 0) {
         res.status(400);
-        throw (new Error(ErrorType.TITLE_REQUIRED));
+        throw (new Error(DefinedErrors.TITLE_REQUIRED));
     }
 
     if (!projectId || projectId.length === 0) {
         res.status(400);
-        throw (new Error(ErrorType.PROJECT_REQUIRED));
+        throw (new Error(DefinedErrors.PROJECT_REQUIRED));
     }
 
     const newTask: Task = {
@@ -51,7 +51,7 @@ export function getTaskById(req: Request, res: Response) {
         res.json(taskData);
     } catch (error) {
         res.status(404);
-        throw (new Error(ErrorType.NOT_FOUND))
+        throw (new Error(DefinedErrors.NOT_FOUND))
     }
 }
 
@@ -64,7 +64,7 @@ export function updateTask(req: Request, res: Response) {
 
         /* eslint-disable  @typescript-eslint/no-explicit-any */
     } catch (error: any) {
-        if(error.message === ErrorType.NOT_FOUND) {
+        if(error.message === DefinedErrors.NOT_FOUND) {
             res.status(404);
             throw(error);
         }
