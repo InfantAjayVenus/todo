@@ -4,8 +4,8 @@
   "scripts": {
     "build": "ts-node index.ts",
     "start": "npm run build && node .build/index.js",
-    "dev": "npm run lint && nodemon index.ts",
-    "lint": "eslint .",
+    "dev": "nodemon",
+    "lint": "eslint --cache .",
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
