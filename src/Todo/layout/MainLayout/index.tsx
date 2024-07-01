@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { Navbar } from "./MainSection/Navbar";
-import {Header as MainSectionHeader} from './MainSection/Header';
+import {Body} from './MainSection/Body';
 
 export interface HeaderProps {
     children: React.ReactNode,
@@ -29,5 +29,5 @@ export function MainSection({ children }: MainSectionProps) {
 
 
 
-MainSection.Header = MainSectionHeader;
+MainSection.Body = Body;
 MainSection.Navbar = Navbar;

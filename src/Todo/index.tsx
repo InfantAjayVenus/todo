@@ -13,12 +13,12 @@ export default function Todo() {
                 <title>todo.</title>
             </Header>
             <MainSection>
-                <MainSection.Header title='Today'>
+                <MainSection.Body title='Today'>
                     <List />
                     <Button variant={'outline'} className='rounded-xl border-current absolute bottom-4 right-4 h-12 w-12 p-1 text-2xl lg:hidden'>
                         <LuPlus />
                     </Button>
-                </MainSection.Header>
+                </MainSection.Body>
 
                 <MainSection.Navbar>
                     <MainSection.Navbar.NavbarItem icon={<LuCalendar className='text-4xl' />} label='Today' />
