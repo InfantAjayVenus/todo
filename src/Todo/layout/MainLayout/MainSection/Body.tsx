@@ -11,9 +11,7 @@ export function Body({ title, children }: MainSectionBodyProps) {
             <header className='pt-2 pb-4'>
                 <h3 className='text-2xl font-bold'>{title}</h3>
             </header>
-            <div className='flex-grow relative border border-current rounded-3xl p-4 lg:w-[80%] '>
-                {children}
-            </div>
+            {children}
         </section>
     )
 }
