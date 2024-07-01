@@ -22,8 +22,8 @@ export default function Todo() {
 
                 <MainSection.Navbar>
                     <MainSection.Navbar.NavbarItem icon={<LuCalendar className='text-4xl' />} label='Today' />
-                    <MainSection.Navbar.NavbarItem icon={<LuCalendarDays className='text-4xl' />} label='Today' />
-                    <MainSection.Navbar.NavbarItem icon={<LuInbox className='text-4xl' />} label='Today' />
+                    <MainSection.Navbar.NavbarItem icon={<LuCalendarDays className='text-4xl' />} label='Calendar' />
+                    <MainSection.Navbar.NavbarItem icon={<LuInbox className='text-4xl' />} label='Inbox' />
                 </MainSection.Navbar>
             </MainSection>
         </>
