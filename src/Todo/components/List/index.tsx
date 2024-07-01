@@ -4,7 +4,7 @@ import { ListItem } from './ListItem';
 export function List() {
     return (
         <motion.ul
-            className='py-6'
+            className='py-6 max-h-[40rem] overflow-auto lg:max-h-[45rem]'
             variants={{
                 start: {},
                 end: {
@@ -20,8 +20,8 @@ export function List() {
             initial="start"
             animate="end"
         >
-            {(new Array(5).fill(0).map((_, index) => (
-                <ListItem key={index} label='test' />
+            {(new Array(15).fill(0).map((_, index) => (
+                <ListItem key={index} label={`test ${index + 1}`} />
             )))}
         </motion.ul>
     )
