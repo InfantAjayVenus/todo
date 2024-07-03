@@ -1,9 +1,7 @@
 
-import { LuCalendar, LuCalendarDays, LuInbox, LuPlus } from 'react-icons/lu';
-import { Button } from '../components/ui/button';
+import { LuCalendar, LuCalendarDays, LuInbox } from 'react-icons/lu';
 import { Header, MainSection } from './layout/MainLayout';
-import { List } from './components/List';
-import { Container } from './components/Content';
+import { Today } from './layout/routes/Today';
 
 
 export default function Todo() {
@@ -14,13 +12,8 @@ export default function Todo() {
                 <title>todo.</title>
             </Header>
             <MainSection>
-                <MainSection.Body title='Today'>
-                    <Container>
-                        <List />
-                        <Button variant={'outline'} className='rounded-xl border-current absolute bottom-4 right-4 h-12 w-12 p-1 text-2xl lg:hidden'>
-                            <LuPlus />
-                        </Button>
-                    </Container>
+                <MainSection.Body>
+                    <Today />
                 </MainSection.Body>
 
                 <MainSection.Navbar>
