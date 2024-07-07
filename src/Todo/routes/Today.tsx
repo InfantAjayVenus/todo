@@ -1,9 +1,9 @@
 import { Container } from "@/Todo/components/Content";
-import { MainSection } from "../MainLayout";
 import { List } from "@/Todo/components/List";
 import { Button } from "@/components/ui/button";
 import { LuPlus } from "react-icons/lu";
 import { motion } from 'framer-motion';
+import { MainSection } from "../components/MainLayout";
 
 export function Today() {
     return (
