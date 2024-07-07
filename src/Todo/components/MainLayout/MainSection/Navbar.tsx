@@ -1,4 +1,4 @@
-import { ReactElement } from "react"
+import { ReactElement, ReactNode } from "react"
 import { LayoutProps } from ".."
 import { IconType } from "react-icons"
 import { Button } from "@/components/ui/button"
@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 export interface MainSectionNavbarProps extends LayoutProps { };
 export interface MainSectionNavbarItemProps {
     icon: ReactElement<IconType>,
-    label: string,
+    label: ReactNode,
 };
 
 export function Navbar({ children }: MainSectionNavbarProps) {
