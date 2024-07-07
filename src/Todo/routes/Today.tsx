@@ -26,13 +26,26 @@ export function Today() {
             </MainSection.Body.Header>
             <Container>
                 <List />
-                <Button
-                    variant={'outline'}
-                    className='rounded-xl border-current absolute bottom-4 right-4 h-12 w-12 p-1 text-2xl lg:hidden'
-
+                <motion.span
+                    initial={{
+                        opacity: 0
+                    }}
+                    animate={{
+                        opacity: 1,
+                    }}
+                    transition={{
+                        delay: 1,
+                        duration: 0.4
+                    }}
                 >
-                    <LuPlus />
-                </Button>
+                    <Button
+                        variant={'outline'}
+                        className='rounded-xl border-current absolute bottom-4 right-4 h-12 w-12 p-1 text-2xl lg:hidden'
+
+                    >
+                        <LuPlus />
+                    </Button>
+                </motion.span>
             </Container>
         </>
     )
