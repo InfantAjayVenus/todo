@@ -1,4 +1,4 @@
-import { LayoutProps } from "../layout/MainLayout";
+import { LayoutProps } from "./MainLayout";
 
 interface ContainerProps extends LayoutProps { };
 
