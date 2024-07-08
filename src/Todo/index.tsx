@@ -1,10 +1,9 @@
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { LuCalendar, LuCalendarDays, LuInbox } from 'react-icons/lu';
-import { Header, MainSection } from './components/MainLayout';
-import { Today } from './routes/Today';
-import { Calendar } from './routes/Calendar';
 import { AnimatePresence } from 'framer-motion';
-import { Inbox } from './routes/Inbox';
+import { LuCalendar, LuCalendarDays, LuInbox } from 'react-icons/lu';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Header, MainSection } from './components/MainLayout';
+import { Calendar } from './routes/Calendar';
+import { TasksList } from './routes/TasksList';
 
 
 export default function Todo() {
@@ -18,21 +17,20 @@ export default function Todo() {
                 <MainSection.Body>
                     <AnimatePresence mode='wait'>
                         <Routes>
-                            <Route path='/' Component={Today} />
+                            <Route index Component={TasksList} />
                             <Route path='/calendar' Component={Calendar} />
-                            <Route path='/inbox' Component={Inbox} />
                         </Routes>
                     </AnimatePresence>
                 </MainSection.Body>
 
                 <MainSection.Navbar>
-                    <NavLink to='/'>
+                    <NavLink to='/?filter=today' >
                         <MainSection.Navbar.NavbarItem icon={<LuCalendar className='text-4xl' />} label='Today' />
                     </NavLink>
                     <NavLink to='/calendar'>
                         <MainSection.Navbar.NavbarItem icon={<LuCalendarDays className='text-4xl' />} label='Calendar' />
                     </NavLink>
-                    <NavLink to='/inbox'>
+                    <NavLink to='/?filter=inbox'>
                         <MainSection.Navbar.NavbarItem icon={<LuInbox className='text-4xl' />} label='Inbox' />
                     </NavLink>
                 </MainSection.Navbar>
