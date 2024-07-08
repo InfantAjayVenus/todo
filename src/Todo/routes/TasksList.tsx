@@ -5,7 +5,7 @@ import { LuPlus } from "react-icons/lu";
 import { motion } from 'framer-motion';
 import { MainSection } from "../components/MainLayout";
 
-export function Today() {
+export function TasksList() {
     return (
         <>
             <MainSection.Body.Header>
