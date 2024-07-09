@@ -1,3 +1,5 @@
+
+import {motion} from 'framer-motion';
 import { LayoutProps } from "..";
 
 export interface MainSectionBodyProps extends LayoutProps {};
@@ -15,6 +17,19 @@ export function Body({ children }: MainSectionBodyProps) {
 
 Body.Header = function Header({children}: BodyHeaderProps) {
     return (
-        <header className='pt-2 pb-4'>{children}</header>
+        <motion.h3 
+            className='pt-2 pb-4 text-2xl font-bold'
+            initial={{
+                opacity: 0,
+                x: -20
+            }}
+            animate={{
+                opacity: 1,
+                x: 0,
+            }}
+            transition={{
+                duration: 0.4,
+            }}
+        >{children}</motion.h3>
     )
 };
