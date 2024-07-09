@@ -1,4 +1,4 @@
-import { Container } from "@/Todo/components/Content";
+import { Container } from "@/Todo/components/Container";
 import { List } from "@/Todo/components/List";
 import { Button } from "@/components/ui/button";
 import { LuPlus } from "react-icons/lu";

@@ -1,4 +1,4 @@
-import { Container } from "@/Todo/components/Content";
+import { Container } from "@/Todo/components/Container";
 import { MainSection } from "../components/MainLayout";
 import {motion} from 'framer-motion';
 
