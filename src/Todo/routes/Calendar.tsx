@@ -6,7 +6,7 @@ export function Calendar() {
     return (
 
         <>
-            <MainSection.Body.Header>
+            <MainSection.Body.Title>
                 <motion.h3
                     className='text-2xl font-bold'
                     initial={{
@@ -21,7 +21,7 @@ export function Calendar() {
                         duration: 0.4,
                     }}
                 >Calendar</motion.h3>
-            </MainSection.Body.Header>
+            </MainSection.Body.Title>
             <Container>
                 <p>Hello Calendar</p>
             </Container>

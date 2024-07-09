@@ -8,9 +8,9 @@ import { MainSection } from "../components/MainLayout";
 export function TasksList() {
     return (
         <>
-            <MainSection.Body.Header>
+            <MainSection.Body.Title>
                 Today
-            </MainSection.Body.Header>
+            </MainSection.Body.Title>
             <Container>
                 <List />
                 <motion.div

@@ -5,6 +5,7 @@ import { LayoutProps } from "..";
 export interface MainSectionBodyProps extends LayoutProps {};
 
 export interface BodyHeaderProps extends LayoutProps {};
+export interface BodyTitleProps extends LayoutProps {};
 
 
 export function Body({ children }: MainSectionBodyProps) {
@@ -16,6 +17,14 @@ export function Body({ children }: MainSectionBodyProps) {
 }
 
 Body.Header = function Header({children}: BodyHeaderProps) {
+    return (
+        <header className='pt-2 pb-4'>
+            {children}
+        </header>
+    )
+}
+
+Body.Title = function Title({children}: BodyTitleProps) {
     return (
         <motion.h3 
             className='pt-2 pb-4 text-2xl font-bold'
