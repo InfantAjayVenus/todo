@@ -4,7 +4,9 @@ import { LayoutProps } from "..";
 
 export interface MainSectionBodyProps extends LayoutProps {};
 
-export interface BodyHeaderProps extends LayoutProps {};
+export interface BodyHeaderProps extends LayoutProps {
+    className?: string;
+};
 export interface BodyTitleProps extends LayoutProps {};
 
 
@@ -16,9 +18,9 @@ export function Body({ children }: MainSectionBodyProps) {
     )
 }
 
-Body.Header = function Header({children}: BodyHeaderProps) {
+Body.Header = function Header({children, className}: BodyHeaderProps) {
     return (
-        <header className='pt-2 pb-4'>
+        <header className={`pt-2 pb-4 ${className}`}>
             {children}
         </header>
     )
@@ -27,7 +29,7 @@ Body.Header = function Header({children}: BodyHeaderProps) {
 Body.Title = function Title({children}: BodyTitleProps) {
     return (
         <motion.h3 
-            className='pt-2 pb-4 text-2xl font-bold'
+            className='pt-2 pb-4 text-2xl font-bold capitalize'
             initial={{
                 opacity: 0,
                 x: -20
