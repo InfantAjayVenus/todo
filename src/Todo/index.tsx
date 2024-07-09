@@ -4,6 +4,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Header, MainSection } from './components/MainLayout';
 import { Calendar } from './routes/Calendar';
 import { TasksList } from './routes/TasksList';
+import { TaskItem } from './routes/TaskItem';
 
 
 export default function Todo() {
@@ -18,6 +19,7 @@ export default function Todo() {
                     <AnimatePresence mode='wait'>
                         <Routes>
                             <Route index Component={TasksList} />
+                            <Route path='/:taskId' Component={TaskItem}/>
                             <Route path='/calendar' Component={Calendar} />
                         </Routes>
                     </AnimatePresence>

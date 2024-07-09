@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ListItem } from './ListItem';
+import { Link } from 'react-router-dom';
 
 export function List() {
     return (
@@ -20,8 +21,10 @@ export function List() {
             initial="start"
             animate="end"
         >
-            {(new Array(15).fill(0).map((_, index) => (
-                <ListItem key={index} label={`test ${index + 1}`} />
+            {(new Array(45).fill(0).map((_, index) => (
+                <Link to={`/task-${index}`}>
+                    <ListItem key={index} label={`test ${index}`} />
+                </Link>
             )))}
         </motion.ul>
     )
