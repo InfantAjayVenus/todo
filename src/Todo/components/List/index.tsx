@@ -4,7 +4,7 @@ import { ListItem } from './ListItem';
 export function List() {
     return (
         <motion.ul
-            className='py-6 max-h-[40rem] overflow-auto lg:max-h-[45rem]'
+            className='py-6 overflow-auto max-h-[100%]'
             variants={{
                 start: {},
                 end: {

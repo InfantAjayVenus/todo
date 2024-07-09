@@ -26,7 +26,8 @@ export function TasksList() {
             </MainSection.Body.Header>
             <Container>
                 <List />
-                <motion.span
+                <motion.div
+                className='sticky bottom-2 left-[90%] h-12 w-12 rounded-2xl lg:hidden'
                     initial={{
                         opacity: 0
                     }}
@@ -40,12 +41,11 @@ export function TasksList() {
                 >
                     <Button
                         variant={'outline'}
-                        className='rounded-xl border-current absolute bottom-4 right-4 h-12 w-12 p-1 text-2xl lg:hidden'
-
+                        className='border-current h-full w-full p-1 text-2xl'
                     >
                         <LuPlus />
                     </Button>
-                </motion.span>
+                </motion.div>
             </Container>
         </>
     )
