@@ -1,0 +1,229 @@
+openapi: '3.0.3'
+info:
+  title: todo-rest-api
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      description: A bearer token obtained from the auth server
+      scheme: bearer
+      type: http
+      bearerFormat: JWT
+  schemas:
+    projectResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        order:
+          type: number
+        color:
+          type: string
+        is_favourite:
+          type: string
+        is_inbox_project:
+          type: boolean
+          default: true
+        view_style:
+          type: string
+          enum:
+            - list
+            - board
+        parent_id:
+          type: string
+          nullable: true
+          default: null
+      example:
+       id: '123512343'
+       name: 'Inbox'
+       order: 0
+       color: 'grey'
+       is_favourite: false
+       is_inbox_project: true
+       view_style: list
+       parent_id: null
+    projectRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        order:
+          type: number
+        color:
+          type: string
+        is_favourite:
+          type: string
+        is_inbox_project:
+          type: boolean
+          default: true
+        view_style:
+          type: string
+          enum:
+            - list
+            - board
+        parent_id:
+          type: string
+          nullable: true
+          default: null
+      example:
+       name: 'Inbox'
+       order: 0
+       color: 'grey'
+       is_favourite: false
+       is_inbox_project: true
+       view_style: list
+       parent_id: null
+
+paths:
+  
+  /projects:
+    get:
+      operationId: getProjectsList
+      tags:
+        - Projects
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/projectResponse"
+        '401':
+          description: Unauthorized request
+    post:
+      operationId: createNewProject
+      tags:
+        - Projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/projectRequest"
+      responses:
+        '200':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/projectResponse"
+        '400':
+          description: Name is a required field
+        '401':
+          description: Unauthorized request
+        '403':
+          description: User does not have permission for this operation
+        '409':
+          description: A resource with the same name already exists 
+
+  /project/{projectId}:
+    get:
+      operationId: getProjectById
+      tags:
+        - Projects
+      parameters:
+        - name: projectId
+          description: ID for which the project data is requested
+          schema:
+            type: string
+          required: true
+          in: path
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/projectResponse"
+        '400':
+          description: Request missing "projectId" in path
+        '401':
+          description: User must login to make this request
+        '403':
+          description: User does not have permission to access this resource
+        '404':
+          description: Requested resource not found
+    post:
+      operationId: updateProjectById
+      tags:
+        - Projects
+      parameters:
+        - name: projectId
+          description: ID of the target project
+          schema:
+            type: string
+          required: true
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/projectResponse"
+      responses:
+        '200':
+          description: Project successfully updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  order:
+                    type: number
+                  color:
+                    type: string
+                  is_favourite:
+                    type: boolean
+                  view_style:
+                    type: string
+                    enum:
+                      - list
+                      - board
+              examples:
+                AllPropertiesUpdate:
+                  value:
+                    name: updated name
+                    order: 1
+                    color: 'red'
+                    is_favourite: true
+                PartialUpdate:
+                  value:
+                    name: New name
+                    color: blue
+                SingleFieldUpdate:
+                  value:
+                    color: lightgreen
+    delete:
+      operationId: deleteProjectById
+      tags:
+        - Projects
+      parameters:
+        - name: projectId
+          schema:
+            type: string
+          in: path
+          required: true
+      responses:
+          '209':
+            description: successfully deleted project
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      enum:
+                        - success
+                        - failed
