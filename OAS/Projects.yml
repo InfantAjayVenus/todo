@@ -26,7 +26,7 @@ components:
         color:
           type: string
         is_favourite:
-          type: string
+          type: boolean
         is_inbox_project:
           type: boolean
           default: true
@@ -40,14 +40,15 @@ components:
           nullable: true
           default: null
       example:
-       id: '123512343'
-       name: 'Inbox'
-       order: 0
-       color: 'grey'
-       is_favourite: false
-       is_inbox_project: true
-       view_style: list
-       parent_id: null
+        id: '123512343'
+        name: 'Inbox'
+        order: 0
+        color: 'grey'
+        is_favourite: false
+        is_inbox_project: true
+        view_style: list
+        parent_id: null
+
     projectRequest:
       type: object
       required:
