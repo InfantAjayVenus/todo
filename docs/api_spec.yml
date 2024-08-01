@@ -193,7 +193,7 @@ paths:
         '409':
           description: A resource with the same name already exists 
 
-  /project/{projectId}:
+  /projects/{projectId}:
     get:
       operationId: getProjectById
       tags:
