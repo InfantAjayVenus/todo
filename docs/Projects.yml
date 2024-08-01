@@ -326,4 +326,41 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/TaskObject"
+    post:
+      operationId: createNewTask
+      tags:
+        - Tasks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - content
+              type: object
+              properties:
+                content:
+                  type: string
+                description:
+                  type: string
+                labels:
+                  type: array
+                  items:
+                    type: string
+                due_string:
+                  type: string
+                project_id:
+                  type: string
+                section_id:
+                  type: string
+                parent_id:
+                  type: string
+      responses:
+        '200':
+          description: Task Created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskObject"
+            
+          
     
