@@ -83,6 +83,70 @@ components:
        view_style: list
        parent_id: null
 
+    TaskObject:
+      type: object
+      properties:
+        id:
+          type: string
+        projectId:
+          type: string
+        sectionId:
+          type: string
+        parent_id:
+          type: string
+        order:
+          type: number
+        creator_id:
+          type: string
+        created_at:
+          type: string
+        content:
+          type: string
+        description:
+          type: string
+        is_completed:
+          type: boolean
+          default: false
+        labels:
+          type: array
+          items:
+            type: string
+        due:
+          type: object
+          properties:
+            date:
+              type: string
+            is_recurring:
+              type: boolean
+              default: false
+            datetime:
+              type: string
+            duePrompt:
+              type: string
+            timezone:
+              type: string
+      example:
+        creator_id: '2671355'
+        created_at: '2019-12-11T22:36:50.000000Z'
+        is_completed: false
+        content: Buy Milk
+        description: ''
+        due:
+          date: '2016-09-01'
+          is_recurring: false
+          datetime: '2016-09-01T12:00:00.000000Z'
+          string: tomorrow at 12
+          timezone: Europe/Moscow
+        id: '2995104339'
+        labels:
+        - Food
+        - Shopping
+        order: 1
+        project_id: '2203306141'
+        section_id: '7025'
+        parent_id: '2995104589'
+
+
 paths:
   
   /projects:
