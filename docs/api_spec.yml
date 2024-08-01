@@ -39,8 +39,11 @@ components:
           type: string
           nullable: true
           default: null
+        creator_id:
+          type: string
       example:
         id: '123512343'
+        creator_id: '91823749'
         name: 'Inbox'
         order: 0
         color: 'grey'
