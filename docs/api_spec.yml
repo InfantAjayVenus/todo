@@ -14,7 +14,7 @@ components:
       type: http
       bearerFormat: JWT
   schemas:
-    projectResponse:
+    ProjectData:
       type: object
       properties:
         id:
@@ -83,7 +83,7 @@ components:
        view_style: list
        parent_id: null
 
-    TaskObject:
+    TaskData:
       type: object
       properties:
         id:
@@ -162,7 +162,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/projectResponse"
+                  $ref: "#/components/schemas/ProjectData"
         '401':
           description: Unauthorized request
     post:
@@ -180,7 +180,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/projectResponse"
+                $ref: "#/components/schemas/ProjectData"
         '400':
           description: Name is a required field
         '401':
@@ -209,7 +209,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/projectResponse"
+                $ref: "#/components/schemas/ProjectData"
         '400':
           description: Request missing "projectId" in path
         '401':
@@ -233,7 +233,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/projectResponse"
+              $ref: "#/components/schemas/ProjectData"
       responses:
         '200':
           description: Project successfully updated.
@@ -325,7 +325,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/TaskObject"
+                  $ref: "#/components/schemas/TaskData"
     post:
       operationId: createNewTask
       tags:
@@ -360,7 +360,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TaskObject"
+                $ref: "#/components/schemas/TaskData"
             
           
     
