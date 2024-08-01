@@ -292,3 +292,38 @@ paths:
                       enum:
                         - success
                         - failed
+
+  /tasks:
+    get:
+      operationId: getTasksList
+      tags:
+        - Tasks
+      parameters:
+        - name: project_id
+          description: filter by project_id if passed
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: section_id
+          description: filter by section_id if passed
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: label
+          description: filter by lable if passed
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TaskObject"
+    
