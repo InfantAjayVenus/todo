@@ -1,0 +1,189 @@
+[
+  {
+    "id": "123512343",
+    "creator_id": "91823749",
+    "name": "Inbox",
+    "order": 0,
+    "color": "grey",
+    "is_favourite": false,
+    "is_inbox_project": true,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "123512344",
+    "creator_id": "91823749",
+    "name": "Work",
+    "order": 1,
+    "color": "blue",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "kanban",
+    "parent_id": null
+  },
+  {
+    "id": "123512345",
+    "creator_id": "91823749",
+    "name": "Personal",
+    "order": 2,
+    "color": "green",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "123512346",
+    "creator_id": "91823750",
+    "name": "Hobbies",
+    "order": 3,
+    "color": "yellow",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "board",
+    "parent_id": null
+  },
+  {
+    "id": "123512347",
+    "creator_id": "91823751",
+    "name": "Shopping",
+    "order": 4,
+    "color": "red",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "123512348",
+    "creator_id": "91823752",
+    "name": "Fitness",
+    "order": 5,
+    "color": "orange",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "calendar",
+    "parent_id": null
+  },
+  {
+    "id": "123512349",
+    "creator_id": "91823750",
+    "name": "Travel",
+    "order": 6,
+    "color": "purple",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "123512350",
+    "creator_id": "91823753",
+    "name": "Learning",
+    "order": 7,
+    "color": "cyan",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "board",
+    "parent_id": null
+  },
+  {
+    "id": "123512351",
+    "creator_id": "91823754",
+    "name": "Projects",
+    "order": 8,
+    "color": "pink",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "kanban",
+    "parent_id": null
+  },
+  {
+    "id": "123512352",
+    "creator_id": "91823755",
+    "name": "Finance",
+    "order": 9,
+    "color": "brown",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "calendar",
+    "parent_id": null
+  },
+  {
+    "id": "123512353",
+    "creator_id": "91823756",
+    "name": "Health",
+    "order": 10,
+    "color": "lime",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "123512354",
+    "creator_id": "91823749",
+    "name": "Entertainment",
+    "order": 11,
+    "color": "teal",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "board",
+    "parent_id": null
+  },
+  {
+    "id": "123512355",
+    "creator_id": "91823751",
+    "name": "Events",
+    "order": 12,
+    "color": "violet",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "kanban",
+    "parent_id": null
+  },
+  {
+    "id": "123512356",
+    "creator_id": "91823752",
+    "name": "Family",
+    "order": 13,
+    "color": "navy",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "calendar",
+    "parent_id": null
+  },
+  {
+    "id": "123512357",
+    "creator_id": "91823750",
+    "name": "Goals",
+    "order": 14,
+    "color": "olive",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "123512358",
+    "creator_id": "91823754",
+    "name": "Career",
+    "order": 15,
+    "color": "maroon",
+    "is_favourite": true,
+    "is_inbox_project": false,
+    "view_style": "kanban",
+    "parent_id": null
+  },
+  {
+    "id": "123512359",
+    "creator_id": "91823755",
+    "name": "Investments",
+    "order": 16,
+    "color": "grey",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "calendar",
+    "parent_id": null
+  }
+]
