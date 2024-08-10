@@ -18,7 +18,7 @@
     "color": "blue",
     "is_favourite": true,
     "is_inbox_project": false,
-    "view_style": "kanban",
+    "view_style": "board",
     "parent_id": null
   },
   {
@@ -62,7 +62,7 @@
     "color": "orange",
     "is_favourite": true,
     "is_inbox_project": false,
-    "view_style": "calendar",
+    "view_style": "board",
     "parent_id": null
   },
   {
@@ -95,7 +95,7 @@
     "color": "pink",
     "is_favourite": false,
     "is_inbox_project": false,
-    "view_style": "kanban",
+    "view_style": "board",
     "parent_id": null
   },
   {
@@ -106,7 +106,7 @@
     "color": "brown",
     "is_favourite": true,
     "is_inbox_project": false,
-    "view_style": "calendar",
+    "view_style": "board",
     "parent_id": null
   },
   {
@@ -118,7 +118,7 @@
     "is_favourite": false,
     "is_inbox_project": false,
     "view_style": "list",
-    "parent_id": null
+    "parent_id": "123512352"
   },
   {
     "id": "123512354",
@@ -139,7 +139,7 @@
     "color": "violet",
     "is_favourite": false,
     "is_inbox_project": false,
-    "view_style": "kanban",
+    "view_style": "board",
     "parent_id": null
   },
   {
@@ -150,7 +150,7 @@
     "color": "navy",
     "is_favourite": true,
     "is_inbox_project": false,
-    "view_style": "calendar",
+    "view_style": "board",
     "parent_id": null
   },
   {
@@ -172,7 +172,7 @@
     "color": "maroon",
     "is_favourite": true,
     "is_inbox_project": false,
-    "view_style": "kanban",
+    "view_style": "board",
     "parent_id": null
   },
   {
@@ -183,7 +183,7 @@
     "color": "grey",
     "is_favourite": false,
     "is_inbox_project": false,
-    "view_style": "calendar",
+    "view_style": "board",
     "parent_id": null
   }
 ]
