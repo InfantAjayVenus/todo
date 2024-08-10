@@ -373,6 +373,8 @@ paths:
   /tasks/{taskId}:
     get:
       operationId: getTaskById
+      tags:
+        - Tasks
       parameters:
         - name: taskId
           in: path
@@ -392,6 +394,8 @@ paths:
             description: The requested task does not exist
     delete:
       operationId: deleteTaskById
+      tags:
+        - Tasks
       parameters:
         - name: taskId
           in: path
