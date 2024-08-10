@@ -364,6 +364,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/TaskData"
-            
+  
+  /tasks/{taskId}:
+    get:
+      operationId: getTaskById
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the specific task data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskData"
+        '401':
+          description: Unauthorized Request
+        '404':
+            description: The requested task does not exist
           
     
