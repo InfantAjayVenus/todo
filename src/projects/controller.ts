@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import projectDB from './db.json';
-import { Project, ViewStyle } from './model';
+import { Project, ProjectRequest, ViewStyle } from './model';
 import path from 'path';
 import { writeFileSync } from 'fs';
 
@@ -10,7 +10,7 @@ export async function getProjects(creatorId: string) {
     return projectDB.filter(({ creator_id }) => creatorId === creator_id);
 }
 
-export async function addProject(projectData: Pick<Project, 'name' | 'creator_id' | 'order' | 'color' | 'parent_id'>): Promise<Project> {
+export async function addProject(projectData: ProjectRequest): Promise<Project> {
 
     if (projectData?.name.length > 0) throw ("Name is a required field");
 
