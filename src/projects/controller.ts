@@ -1,10 +1,11 @@
 import { randomUUID } from 'crypto';
-import projectDB from './db.json';
+import dbContent from './db.json';
 import { Project, ProjectRequest, ViewStyle } from './model';
 import path from 'path';
 import { writeFileSync } from 'fs';
 
 const dbPath = path.join(__dirname, 'db.json');
+let projectDB = dbContent;
 
 export async function getProjects(creatorId: string) {
     return projectDB.filter(({ creator_id }) => creatorId === creator_id);
@@ -44,4 +45,13 @@ export async function getProjectById(creatorId: string, projectId: string): Prom
     if(!projectData) throw("Project Not Found");
 
     return projectData;
+}
+
+export async function deleteProjectById(projectId: string) {
+    const updatedProjectsList = projectDB.filter(({id}) => id !== projectId);
+
+    projectDB = updatedProjectsList;
+    writeFileSync(dbPath, JSON.stringify(updatedProjectsList, null, 2));
+
+    return updatedProjectsList.length;
 }
