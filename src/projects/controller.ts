@@ -7,8 +7,16 @@ import { writeFileSync } from 'fs';
 const dbPath = path.join(__dirname, 'db.json');
 let projectDB = dbContent;
 
-export async function getProjects(creatorId: string) {
-    return projectDB.filter(({ creator_id }) => creatorId === creator_id);
+export async function getProjects(creatorId: string, filters: {
+    isFavourite?: boolean,
+    viewStyle?: ViewStyle,
+    parentId?: string,
+}): Promise<Project[]> {
+    return projectDB
+        .filter(({ creator_id }) => creatorId === creator_id)
+        .filter(({is_favourite}) => !filters.isFavourite || filters.isFavourite === is_favourite)
+        .filter(({view_style}) => !filters.viewStyle || filters.viewStyle === view_style)
+        .filter(({parent_id}) => !filters.parentId || filters.parentId === parent_id) as Project[];
 }
 
 export async function addProject(projectData: ProjectRequest): Promise<Project> {
