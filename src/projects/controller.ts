@@ -11,7 +11,7 @@ export async function getProjects(creatorId: string, filters: {
     isFavourite?: boolean,
     viewStyle?: ViewStyle,
     parentId?: string,
-}): Promise<Project[]> {
+}={}): Promise<Project[]> {
     return projectDB
         .filter(({ creator_id }) => creatorId === creator_id)
         .filter(({is_favourite}) => !filters.isFavourite || filters.isFavourite === is_favourite)
