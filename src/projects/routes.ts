@@ -14,3 +14,13 @@ projectRouter.get('/', async (req, res) => {
         })
     }
 });
+
+projectRouter.delete('/:projectId', async (req, res) => {
+    const projectId:string = req.query.projectId as string;
+    try {
+        await deleteProjectById(projectId);
+        res.status(204);
+    } catch (error: any) {
+       res.status(500).send(error.message);
+    }
+})
