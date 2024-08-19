@@ -5,6 +5,7 @@ import { errorHandler } from './src/lib/middlewares/errorHandler';
 import { logger } from './src/lib/middlewares/logger';
 import { tasksRouter } from './src/tasks/entry-points/tasksRoutes';
 import { projectRouter } from './src/projects/routes';
+import { authHandler } from './src/lib/middlewares/authMiddleware';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const app = express();
 const port = process.env.PORT || 3010;
 
 app.use(cors());
+app.use(authHandler);
 app.use(logger);
 app.use('/tasks', tasksRouter);
 app.use('/projects', projectRouter);
