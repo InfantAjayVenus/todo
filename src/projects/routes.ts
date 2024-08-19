@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProjects } from './controller';
+import { deleteProjectById, getProjects } from './controller';
 
 export const projectRouter = express.Router();
 projectRouter.use(express.json());
