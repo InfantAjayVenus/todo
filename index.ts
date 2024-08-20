@@ -3,7 +3,6 @@ import express, { ErrorRequestHandler, Request, Response } from "express";
 import cors from 'cors';
 import { errorHandler } from './src/lib/middlewares/errorHandler';
 import { logger } from './src/lib/middlewares/logger';
-import { tasksRouter } from './src/tasks/entry-points/tasksRoutes';
 import { projectRouter } from './src/projects/routes';
 import { authHandler } from './src/lib/middlewares/authMiddleware';
 
@@ -16,7 +15,6 @@ const port = process.env.PORT || 3010;
 app.use(cors());
 app.use(authHandler);
 app.use(logger);
-app.use('/tasks', tasksRouter);
 app.use('/projects', projectRouter);
 
 app.get('/', (req: Request, res: Response) => {
