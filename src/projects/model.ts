@@ -11,6 +11,7 @@ export type Project = {
 };
 
 export type ProjectRequest =  Pick<Project, 'name' | 'creator_id' | 'order'> & Partial<Pick<Project, 'color' | 'parent_id'>>;
+export type ProjectUpdateRequest = Partial<Pick<Project, 'name' | 'order' | 'color' | 'is_favourite' | 'view_style' | 'parent_id'>>;
 
 export enum ViewStyle {
     list= "list",

@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import dbContent from './db.json';
-import { Project, ProjectRequest, ViewStyle } from './model';
+import { Project, ProjectRequest, ProjectUpdateRequest, ViewStyle } from './model';
 import path from 'path';
 import { writeFileSync } from 'fs';
 
@@ -56,8 +56,8 @@ export async function getProjectById(creatorId: string, projectId: string): Prom
     return projectData;
 }
 
-export async function updateProjectById(projectId: string, updatedProjectData: Partial<Project>): Promise<Project> {
-    const projectDataIndex = projectDB.findIndex(({id}) => id === projectId);
+export async function updateProjectById(creatorId:string ,projectId: string, updatedProjectData: ProjectUpdateRequest): Promise<Project> {
+    const projectDataIndex = projectDB.filter(({creator_id}) => creatorId === creator_id).findIndex(({id}) => id === projectId);
 
     if(projectDataIndex < 0) throw(`The resource "${projectId}" could not be found`);
 
