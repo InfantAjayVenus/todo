@@ -30,7 +30,7 @@ projectRouter.post('/', async (req: AuthenticatedRequest, res) => {
     if(order < 0 || isNaN(order)) throw("Order of the project is Invalid");
 
     try {
-        const newProject = addProject(req.body as ProjectRequest);
+        const newProject = await addProject(req.body as ProjectRequest);
         res.status(200).json(newProject);
     } catch (error) {
        res.status(500).json({
