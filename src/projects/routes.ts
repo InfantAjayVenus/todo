@@ -41,7 +41,7 @@ projectRouter.post('/', async (req: AuthenticatedRequest, res) => {
 })
 
 projectRouter.get('/:projectId', async (req:AuthenticatedRequest, res) => {
-    const projectId = req.query.projectId as string;
+    const projectId = req.params.projectId as string;
     const creatorId = req.creatorId || '';
 
     if(creatorId?.length === 0 || !creatorId) throw("Invalid Creator ID");
@@ -58,7 +58,7 @@ projectRouter.get('/:projectId', async (req:AuthenticatedRequest, res) => {
 })
 
 projectRouter.post('/:projectId', async (req: AuthenticatedRequest, res) => {
-    const projectId = req.query.projectId as string;
+    const projectId = req.params.projectId as string;
     const creatorId = req.creatorId || '';
 
     if(creatorId?.length === 0 || !creatorId) throw("Invalid Creator ID");
@@ -78,7 +78,7 @@ projectRouter.post('/:projectId', async (req: AuthenticatedRequest, res) => {
 })
 
 projectRouter.delete('/:projectId', async (req: AuthenticatedRequest, res) => {
-    const projectId:string = req.query.projectId as string;
+    const projectId:string = req.params.projectId as string;
     try {
         await deleteProjectById(req.creatorId || '', projectId);
         res.status(204);
