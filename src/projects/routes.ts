@@ -1,6 +1,7 @@
 import express from 'express';
-import { deleteProjectById, getProjects } from './controller';
+import { addProject, deleteProjectById, getProjects } from './controller';
 import { AuthenticatedRequest } from '../lib/middlewares/authMiddleware';
+import { ProjectRequest } from './model';
 
 export const projectRouter = express.Router();
 projectRouter.use(express.json());
@@ -16,6 +17,28 @@ projectRouter.get('/', async (req: AuthenticatedRequest, res) => {
         })
     }
 });
+
+projectRouter.post('/', async (req: AuthenticatedRequest, res) => {
+    const {
+        creator_id,
+        name,
+        order
+    } = req.body as ProjectRequest;
+
+    if(creator_id?.length === 0 || !creator_id) throw("Invalid Creator ID");
+    if(name?.length === 0 || !creator_id) throw("Name is required to create a Project");
+    if(order < 0 || isNaN(order)) throw("Order of the project is Invalid");
+
+    try {
+        const newProject = addProject(req.body as ProjectRequest);
+        res.status(200).json(newProject);
+    } catch (error) {
+       res.status(500).json({
+        error: "Failed to create Project"
+       }) 
+    }
+
+})
 
 projectRouter.delete('/:projectId', async (req, res) => {
     const projectId:string = req.query.projectId as string;
