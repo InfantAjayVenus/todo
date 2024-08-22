@@ -44,8 +44,9 @@ export async function addProject(projectData: ProjectRequest): Promise<Project> 
 }
 
 export async function getProjectById(creatorId: string, projectId: string): Promise<Project> {
-    if (creatorId?.length === 0) throw ("creator_id should not be null");
-    if (projectId?.length === 0) throw ("project_id should not be null");
+    if (creatorId?.length === 0 || !creatorId) throw ("creator_id should not be null");
+    if (projectId?.length === 0 || !projectId) throw ("project_id should not be null");
+
 
     const userProjects = projectDB.filter(({ creator_id }) => creatorId === creator_id);
     const projectData = userProjects.find(({id}) => id === projectId) as Project;
