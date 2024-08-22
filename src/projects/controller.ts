@@ -35,7 +35,7 @@ export async function addProject(projectData: ProjectRequest): Promise<Project> 
         is_favourite: false,
         is_inbox_project: false,
         view_style: ViewStyle.list,
-        parent_id: projectData.parent_id
+        parent_id: projectData.parent_id || null
     }
 
     projectDB.push(newProject);

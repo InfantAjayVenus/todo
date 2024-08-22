@@ -10,7 +10,7 @@ export type Project = {
     parent_id: string | null,
 };
 
-export type ProjectRequest = Pick<Project, 'name' | 'creator_id' | 'order' | 'color' | 'parent_id'>;
+export type ProjectRequest =  Pick<Project, 'name' | 'creator_id' | 'order'> & Partial<Pick<Project, 'color' | 'parent_id'>>;
 
 export enum ViewStyle {
     list= "list",
