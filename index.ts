@@ -13,6 +13,7 @@ const app = express();
 const port = process.env.PORT || 3010;
 
 app.use(cors());
+app.use(express.json());
 app.use(authHandler);
 app.use(logger);
 app.use('/projects', projectRouter);
