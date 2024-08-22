@@ -51,7 +51,9 @@ projectRouter.get('/:projectId', async (req:AuthenticatedRequest, res) => {
         const projectData = await getProjectById(creatorId, projectId);
         res.status(200).json(projectData);
     } catch (error) {
-        
+        res.status(500).json({
+            error: "Error Fetching the project"
+        })
     }
 })
 
@@ -68,7 +70,9 @@ projectRouter.post('/:projectId', async (req: AuthenticatedRequest, res) => {
 
         res.status(200).json(updatedProject);
     } catch (error) {
-        
+        res.status(500).json({
+            error: "Unable to update project"
+        })
     }
 
 })
@@ -78,7 +82,9 @@ projectRouter.delete('/:projectId', async (req: AuthenticatedRequest, res) => {
     try {
         await deleteProjectById(req.creatorId || '', projectId);
         res.status(204);
-    } catch (error: any) {
-       res.status(500).send(error.message);
+    } catch (error) {
+       res.status(500).send({
+            error: "Unable to Delete Project"
+       });
     }
 })
