@@ -1,5 +1,5 @@
 import express from 'express';
-import { addProject, deleteProjectById, getProjects } from './controller';
+import { addProject, deleteProjectById, getProjectById, getProjects } from './controller';
 import { AuthenticatedRequest } from '../lib/middlewares/authMiddleware';
 import { ProjectRequest } from './model';
 
@@ -38,6 +38,21 @@ projectRouter.post('/', async (req: AuthenticatedRequest, res) => {
        }) 
     }
 
+})
+
+projectRouter.get('/:projectId', async (req:AuthenticatedRequest, res) => {
+    const projectId = req.query.projectId as string;
+    const creatorId = req.creatorId || '';
+
+    if(creatorId?.length === 0 || !creatorId) throw("Invalid Creator ID");
+    if(projectId?.length === 0 || !projectId) throw("Invalid Project ID");
+
+    try {
+        const projectData = await getProjectById(creatorId, projectId);
+        res.status(200).json(projectData);
+    } catch (error) {
+        
+    }
 })
 
 projectRouter.delete('/:projectId', async (req: AuthenticatedRequest, res) => {
