@@ -26,7 +26,7 @@ projectRouter.post('/', async (req: AuthenticatedRequest, res) => {
     } = req.body as ProjectRequest;
 
     if(creator_id?.length === 0 || !creator_id) throw("Invalid Creator ID");
-    if(name?.length === 0 || !creator_id) throw("Name is required to create a Project");
+    if(name?.length === 0 || !name) throw("Name is required to create a Project");
     if(order < 0 || isNaN(order)) throw("Order of the project is Invalid");
 
     try {
