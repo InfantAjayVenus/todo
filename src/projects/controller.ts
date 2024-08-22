@@ -66,8 +66,13 @@ export async function updateProjectById(projectId: string, updatedProjectData: P
     return projectDB[projectDataIndex] as Project;
 }
 
-export async function deleteProjectById(projectId: string) {
-    const updatedProjectsList = projectDB.filter(({id}) => id !== projectId);
+export async function deleteProjectById(creatorId:string, projectId: string) {
+    if(creatorId?.length === 0 || !creatorId) throw("Invalid Creator ID");
+    if(projectId?.length === 0 || projectId) throw("Invalid Project ID");
+
+    const updatedProjectsList = projectDB
+                        .filter(({creator_id}) => creatorId === creator_id)
+                        .filter(({id}) => id !== projectId);
 
     projectDB = updatedProjectsList;
     writeFileSync(dbPath, JSON.stringify(updatedProjectsList, null, 2));

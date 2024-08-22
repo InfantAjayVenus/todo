@@ -40,10 +40,10 @@ projectRouter.post('/', async (req: AuthenticatedRequest, res) => {
 
 })
 
-projectRouter.delete('/:projectId', async (req, res) => {
+projectRouter.delete('/:projectId', async (req: AuthenticatedRequest, res) => {
     const projectId:string = req.query.projectId as string;
     try {
-        await deleteProjectById(projectId);
+        await deleteProjectById(req.creatorId || '', projectId);
         res.status(204);
     } catch (error: any) {
        res.status(500).send(error.message);
