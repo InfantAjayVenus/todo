@@ -21,7 +21,7 @@ export async function getProjects(creatorId: string, filters: {
 
 export async function addProject(projectData: ProjectRequest): Promise<Project> {
 
-    if (projectData?.name.length > 0) throw ("Name is a required field");
+    if (projectData?.name.length === 0 || !projectData.name) throw ("Name is a required field");
 
     const userProjects = projectDB.filter(({ creator_id }) => creator_id === projectData.creator_id);
     if (userProjects.some(({ name }) => name === projectData.name)) throw ("A Project with the name already exists");
