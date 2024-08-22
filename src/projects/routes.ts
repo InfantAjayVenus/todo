@@ -1,7 +1,7 @@
 import express from 'express';
-import { addProject, deleteProjectById, getProjectById, getProjects } from './controller';
+import { addProject, deleteProjectById, getProjectById, getProjects, updateProjectById } from './controller';
 import { AuthenticatedRequest } from '../lib/middlewares/authMiddleware';
-import { ProjectRequest } from './model';
+import { ProjectRequest, ProjectUpdateRequest } from './model';
 
 export const projectRouter = express.Router();
 projectRouter.use(express.json());
@@ -53,6 +53,24 @@ projectRouter.get('/:projectId', async (req:AuthenticatedRequest, res) => {
     } catch (error) {
         
     }
+})
+
+projectRouter.post('/:projectId', async (req: AuthenticatedRequest, res) => {
+    const projectId = req.query.projectId as string;
+    const creatorId = req.creatorId || '';
+
+    if(creatorId?.length === 0 || !creatorId) throw("Invalid Creator ID");
+    if(projectId?.length === 0 || !projectId) throw("Invalid Project ID");
+
+    try {
+        const updateProjectData: ProjectUpdateRequest = req.body;
+        const updatedProject = await updateProjectById(creatorId, projectId, updateProjectData);
+
+        res.status(200).json(updatedProject);
+    } catch (error) {
+        
+    }
+
 })
 
 projectRouter.delete('/:projectId', async (req: AuthenticatedRequest, res) => {
