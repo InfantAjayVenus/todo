@@ -1,15 +1,21 @@
 import express from 'express';
 import { addProject, deleteProjectById, getProjectById, getProjects, updateProjectById } from './controller';
 import { AuthenticatedRequest } from '../lib/middlewares/authMiddleware';
-import { ProjectRequest, ProjectUpdateRequest } from './model';
+import { ProjectRequest, ProjectUpdateRequest, ViewStyle } from './model';
 
 export const projectRouter = express.Router();
 projectRouter.use(express.json());
 
 projectRouter.get('/', async (req: AuthenticatedRequest, res) => {
     if(!req.creatorId) throw('Invalid Creator ID');
+    const {isFavourite, viewStyle, parentId} = req.query;
     try {
-        const filteredProjects = await getProjects(req.creatorId);
+        const filters = {
+            isFavourite: isFavourite ? isFavourite === 'true' : undefined,
+            viewStyle: viewStyle ? (viewStyle === ViewStyle.board ? ViewStyle.board : ViewStyle.list): undefined,
+            parentId: parentId? parentId as string : undefined,
+        }
+        const filteredProjects = await getProjects(req.creatorId, filters);
         res.status(200).json(filteredProjects);
     } catch (error) {
         res.status(500).json({
