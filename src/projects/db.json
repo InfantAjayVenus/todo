@@ -137,7 +137,7 @@
     "name": "Events this month",
     "order": 12,
     "color": "red",
-    "is_favourite": false,
+    "is_favourite": true,
     "is_inbox_project": false,
     "view_style": "board",
     "parent_id": null
@@ -205,7 +205,7 @@
     "is_favourite": false,
     "is_inbox_project": false,
     "view_style": "list",
-    "parent_id": null
+    "parent_id": "123512355"
   },
   {
     "id": "c448c6dc-1dca-489d-a544-ce97579e26ef",
