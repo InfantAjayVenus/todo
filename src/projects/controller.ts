@@ -57,14 +57,15 @@ export async function getProjectById(creatorId: string, projectId: string): Prom
 }
 
 export async function updateProjectById(creatorId:string ,projectId: string, updatedProjectData: ProjectUpdateRequest): Promise<Project> {
-    const projectDataIndex = projectDB.filter(({creator_id}) => creatorId === creator_id).findIndex(({id}) => id === projectId);
+    const projectData= projectDB.filter(({creator_id}) => creatorId === creator_id).find(({id}) => id === projectId);
+    if(!projectData) throw(`The resource "${projectId}" could not be found`);
 
-    if(projectDataIndex < 0) throw(`The resource "${projectId}" could not be found`);
+    const updateIndex = projectDB.findIndex(({id}) => id === projectId);
 
-    projectDB[projectDataIndex] = {...projectDB[projectDataIndex], ...updatedProjectData} as Project;
+    projectDB[updateIndex] = {...projectDB[updateIndex], ...updatedProjectData} as Project;
     writeFileSync(dbPath, JSON.stringify(projectDB, null, 2));
 
-    return projectDB[projectDataIndex] as Project;
+    return projectDB[updateIndex] as Project;
 }
 
 export async function deleteProjectById(creatorId:string, projectId: string) {
