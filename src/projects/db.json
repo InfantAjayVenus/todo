@@ -134,9 +134,9 @@
   {
     "id": "123512355",
     "creator_id": "91823751",
-    "name": "Events",
+    "name": "Events this month",
     "order": 12,
-    "color": "violet",
+    "color": "red",
     "is_favourite": false,
     "is_inbox_project": false,
     "view_style": "board",
@@ -184,6 +184,38 @@
     "is_favourite": false,
     "is_inbox_project": false,
     "view_style": "board",
+    "parent_id": null
+  },
+  {
+    "id": "471fb0e8-dd2c-4bdc-a310-a670b7a79b65",
+    "name": "This a new Project",
+    "order": 2,
+    "color": "",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "98ad345f-c976-4d04-b8dd-d5b3a9e23129",
+    "creator_id": "91823751",
+    "name": "This a new Project",
+    "order": 2,
+    "color": "",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
+    "parent_id": null
+  },
+  {
+    "id": "c448c6dc-1dca-489d-a544-ce97579e26ef",
+    "creator_id": "91823751",
+    "name": "New Project",
+    "order": 6,
+    "color": "",
+    "is_favourite": false,
+    "is_inbox_project": false,
+    "view_style": "list",
     "parent_id": null
   }
 ]
