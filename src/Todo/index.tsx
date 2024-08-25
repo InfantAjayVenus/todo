@@ -19,7 +19,7 @@ export default function Todo() {
                     <AnimatePresence mode='wait'>
                         <Routes>
                             <Route index Component={TasksList} />
-                            <Route path='/:taskId' Component={TaskItem}/>
+                            <Route path='/task/:taskId' Component={TaskItem}/>
                             <Route path='/calendar' Component={Calendar} />
                         </Routes>
                     </AnimatePresence>
