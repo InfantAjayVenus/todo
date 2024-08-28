@@ -1,10 +1,11 @@
 import { AnimatePresence } from 'framer-motion';
-import { LuCalendar, LuCalendarDays, LuInbox } from 'react-icons/lu';
+import { LuCalendar, LuCalendarDays, LuFolder, LuInbox } from 'react-icons/lu';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Header, MainSection } from './components/MainLayout';
 import { Calendar } from './routes/Calendar';
-import { TasksList } from './routes/TasksList';
+import { Projects } from './routes/Projects';
 import { TaskItem } from './routes/TaskItem';
+import { TasksList } from './routes/TasksList';
 
 
 export default function Todo() {
@@ -19,8 +20,9 @@ export default function Todo() {
                     <AnimatePresence mode='wait'>
                         <Routes>
                             <Route index Component={TasksList} />
-                            <Route path='/task/:taskId' Component={TaskItem}/>
-                            <Route path='/calendar' Component={Calendar} />
+                            <Route path='task/:taskId/' Component={TaskItem} />
+                            <Route path='calendar/' Component={Calendar} />
+                            <Route path='projects/'  Component={Projects} />
                         </Routes>
                     </AnimatePresence>
                 </MainSection.Body>
@@ -34,6 +36,9 @@ export default function Todo() {
                     </NavLink>
                     <NavLink to='/?filter=inbox'>
                         <MainSection.Navbar.NavbarItem icon={<LuInbox className='text-4xl' />} label='Inbox' />
+                    </NavLink>
+                    <NavLink to='/projects'>
+                        <MainSection.Navbar.NavbarItem icon={<LuFolder className='text-4xl' />} label='Projects' />
                     </NavLink>
                 </MainSection.Navbar>
             </MainSection>
