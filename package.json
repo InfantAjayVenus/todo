@@ -1,0 +1,31 @@
+{
+  "name": "todo",
+  "version": "0.1.0",
+  "description": "A clone implementation of todoist app",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:app": "cd packages/app &&  npm run dev",
+    "dev:api": "cd packages/api && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InfantAjayVenus/todo.git"
+  },
+  "keywords": [
+    "react",
+    "react-router-dom",
+    "express",
+    "typescript",
+    "npm-workspaces",
+    "docker",
+    "todoist-clone"
+  ],
+  "author": "Infant Ajay Venus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/InfantAjayVenus/todo/issues"
+  },
+  "homepage": "https://github.com/InfantAjayVenus/todo#readme"
+}
