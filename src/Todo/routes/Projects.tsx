@@ -3,8 +3,10 @@ import { MainSection } from "../components/MainLayout";
 import { Container } from '../components/Container';
 import { Button } from '@/components/ui/button';
 import { LuPlus } from 'react-icons/lu';
+import { Outlet, useNavigate,  } from 'react-router-dom';
 
 export function Projects() {
+    const navigate = useNavigate();
     return (
         <>
             <MainSection.Body.Title>
@@ -61,11 +63,15 @@ export function Projects() {
                     <Button
                         variant={'outline'}
                         className='border-current h-full w-full p-1 text-2xl'
+                        onClick={() => {
+                            navigate('new');
+                        }}
                     >
                         <LuPlus />
                     </Button>
                 </motion.div>
             </Container>
+            <Outlet />
         </>
     )
 }
