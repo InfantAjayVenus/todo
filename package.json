@@ -6,8 +6,9 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:app": "cd packages/app &&  npm run dev",
-    "dev:api": "cd packages/api && npm run dev"
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:app\"",
+    "dev:app": "npm run dev -w packages/app",
+    "dev:api": "npm run dev -w packages/api"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/InfantAjayVenus/todo/issues"
   },
-  "homepage": "https://github.com/InfantAjayVenus/todo#readme"
+  "homepage": "https://github.com/InfantAjayVenus/todo#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
