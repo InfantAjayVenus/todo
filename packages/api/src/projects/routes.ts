@@ -1,7 +1,7 @@
 import express from 'express';
 import { addProject, deleteProjectById, getProjectById, getProjects, updateProjectById } from './controller';
 import { AuthenticatedRequest } from '../lib/middlewares/authMiddleware';
-import { ProjectRequest, ProjectUpdateRequest, ViewStyle } from './model';
+import { ProjectRequest, ProjectUpdateRequest, ViewStyle } from 'lib/model';
 
 export const projectRouter = express.Router();
 projectRouter.use(express.json());

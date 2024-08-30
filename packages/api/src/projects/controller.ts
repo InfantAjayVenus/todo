@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import dbContent from './db.json';
-import { Project, ProjectRequest, ProjectUpdateRequest, ViewStyle } from './model';
+import { Project, ProjectRequest, ProjectUpdateRequest, ViewStyle } from 'lib/model';
 import path from 'path';
 import { writeFileSync } from 'fs';
 
